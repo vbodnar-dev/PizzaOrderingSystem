@@ -1,0 +1,58 @@
+<div class="container shadow-lg mt-5 bg-light p-5 col-lg-6">
+  <div class="text-center">
+    <h1 class="mb-3">Pizza OS</h1>
+  </div>
+  
+  <div>
+    <table class="table">
+      <thead>
+        <tr>
+          <th></th>
+          <th *ngFor="let pizzaSize of pizzaSizeDS.pizzaSize">
+            {{pizzaSize.name}} ${{pizzaSize.cost}}
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td colspan="5">Veg Toppings</td>
+        </tr>
+        <tr *ngFor="let vegTopping of pizzaSizeDS.toppings.vegToppings">
+          <td>{{vegTopping.name}} ${{vegTopping.cost}}</td>
+          <td *ngFor="let pizzaSize of pizzaSizeDS.pizzaSize">
+            <input type="checkbox" name="{{pizzaSize.id}}_{{vegTopping.id}}" class="" (change)="valuechange($event)" />
+          </td>
+        </tr>
+        <tr>
+          <td colspan="5">Non Veg Toppings</td>
+        </tr>
+        <tr *ngFor="let nonVegTopping of pizzaSizeDS.toppings.nonVegToppings">
+          <td>{{nonVegTopping.name}} ${{nonVegTopping.cost}}</td>
+          <td *ngFor="let pizzaSize of pizzaSizeDS.pizzaSize">
+            <input type="checkbox" name="{{pizzaSize.id}}_{{nonVegTopping.id}}" class="" (change)="valuechange($event)" />
+          </td>
+        </tr>
+        <tr>
+          <td colspan="5">Total</td>
+        </tr>
+        <tr>
+          <td>Offer</td>
+          <td *ngFor="let pizzaSize of pizzaSizeDS.pizzaSize">
+            <label class="offer-pizza-size-{{pizzaSize.id}}"></label>
+          </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td *ngFor="let pizzaSize of pizzaSizeDS.pizzaSize">
+            <label class="cost-sum-offer pizza-size-{{pizzaSize.id}}"></label><br/>
+            <label class="cost-sum pizza-size-{{pizzaSize.id}}"></label>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+
+
+
